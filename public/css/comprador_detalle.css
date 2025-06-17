@@ -1,0 +1,132 @@
+/* Estilos para la vista de detalles del comprador */
+.field-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.icon-field {
+    color: #007bff;
+    width: 25px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+/* Estilos para el botón y modal de contrato */
+.contract-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.contract-button:hover {
+    transform: scale(1.02);
+    text-decoration: underline;
+}
+
+.contract-button i {
+    font-size: 1.1rem;
+}
+
+.modal-body {
+    text-align: center;
+    padding: 2rem;
+}
+
+.contract-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contract-actions .btn {
+    min-width: 120px;
+}
+
+.contract-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contract-upload-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Estilos para estados de pago */
+.payment-status {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.status-paid {
+    color: #28a745;
+}
+
+.status-partial {
+    color: #ffc107;
+}
+
+.status-pending {
+    color: #dc3545;
+}
+
+/* Destacar cuota seleccionada */
+.highlight-cuota {
+    animation: highlight-glow 2s ease-in-out;
+}
+
+@keyframes highlight-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+    }
+}
+
+/* Estilos para tarjetas de cuotas */
+.cuota-card {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+}
+
+.cuota-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.cuota-card .card-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: 600;
+}
+
+.cuota-card .card-body {
+    padding: 0.8rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 767px) {
+    .field-value {
+        font-size: 1rem;
+    }
+    
+    .card-header {
+        padding: 0.75rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+} 

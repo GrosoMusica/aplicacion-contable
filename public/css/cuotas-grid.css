@@ -1,0 +1,56 @@
+/* Estilos para la grilla de cuotas */
+.cuota-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cuota-header {
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+.highlight-cuota {
+    animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+    0% { background-color: rgba(255, 255, 0, 0.5); }
+    100% { background-color: transparent; }
+}
+
+/* Estados de cuotas */
+.cuota-pagada {
+    border-left: 4px solid #28a745;
+}
+
+.cuota-parcial {
+    border-left: 4px solid #ffc107;
+}
+
+.cuota-adeuda, .cuota-vencida {
+    border-left: 4px solid #dc3545;
+}
+
+.cuota-pendiente {
+    border-left: 4px solid #17a2b8;
+}
+
+.cuota-futura {
+    border-left: 4px solid #6c757d;
+}
+
+/* Estilo para los detalles de pagos */
+.pago-item {
+    font-size: 0.85rem;
+    padding: 5px 0;
+}
+
+/* Badges */
+.badge-cuota {
+    font-size: 0.7rem;
+    font-weight: normal;
+    padding: 4px 8px;
+} 

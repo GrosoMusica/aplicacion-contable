@@ -1,0 +1,472 @@
+/* Estilos base del "original" */
+body {
+    background-color: #f8f5e6; /* Fondo beige suave */
+    /* Si ya tienes un background-color para body en otro CSS global, decide cuál mantener */
+}
+
+/* Estilos existentes */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Actualizado desde el "original" */
+    margin-bottom: 20px;
+}
+/* ... (otros estilos existentes) ... */
+
+/* Nuevos estilos para pestañas con bordes más definidos */
+.acreedor-tabs .nav-link {
+    position: relative;
+    color: #495057;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-right: 4px;
+    background-color: #f8f9fa;
+}
+
+.acreedor-tabs .nav-link.active {
+    color: #212529;
+    background-color: #fff;
+    border-color: #9acd32 #9acd32 #fff;
+    border-top-width: 3px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.acreedor-tabs .nav-link:hover {
+    background-color: rgba(154, 205, 50, 0.1);
+}
+
+.acreedor-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.acreedor-tabs .nav-link .badge {
+    margin-left: 8px;
+    font-size: 0.75rem;
+    background-color: #28a745; /* Este es el .badge.bg-success original */
+}
+.card-header {
+    padding: 0.75rem 1.25rem; /* Añadido desde el blade, aunque ya existía padding en la regla original */
+    background-color: #ffc107 !important; /* Color amarillo - Ya existía y es igual */
+    color: #212529; /* Ya existía y es igual */
+}
+/* Estilos adicionales */
+.month-selector {
+    background-color: #f8f9fa;
+}
+.table-row-striped:nth-child(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+.porcentaje-badge {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+.badge-estado-pagado, .badge-estado-pagada {
+    background-color: #28a745;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+}
+.badge-estado-parcial {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+}
+.badge-estado-pendiente {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+}
+.monto-pagado {
+    color: #28a745;
+    font-weight: bold;
+}
+.monto-parcial {
+    color: #ffc107;
+    font-weight: bold;
+}
+.monto-pendiente {
+    color: #dc3545;
+    font-weight: bold;
+}
+.acreedor-tabs .nav-link {
+    color: #495057;
+}
+.acreedor-tabs .nav-link.active {
+    color: #0d6efd;
+    font-weight: bold;
+}
+.acreedor-fecha-creacion {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+#tab-new {
+    color: #6c757d;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+#tab-new:hover {
+    color: #fff;
+    background-color: #9acd32;
+    border-color: #9acd32;
+}
+
+/* En pantallas pequeñas, hacer que las pestañas sean más compactas */
+@media (max-width: 768px) {
+    .acreedor-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .acreedor-tabs .nav-item {
+        flex: 0 0 auto;
+    }
+}
+
+/* Estilos de estados y badges - REDUCIDOS DE TAMAÑO */
+.badge-estado-pagada, .badge-estado-pagado {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 0.15em 0.5em;    /* Padding reducido */
+    border-radius: 0.2rem;    /* Border radius reducido */
+    font-size: 0.75rem;       /* Tamaño de fuente reducido */
+}
+
+.badge-estado-parcial {
+    background-color: #ffc107; /* Amarillo */
+    color: #212529;
+    padding: 0.15em 0.5em;    /* Padding reducido */
+    border-radius: 0.2rem;    /* Border radius reducido */
+    font-size: 0.75rem;       /* Tamaño de fuente reducido */
+}
+
+.badge-estado-pendiente {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    padding: 0.15em 0.5em;    /* Padding reducido */
+    border-radius: 0.2rem;    /* Border radius reducido */
+    font-size: 0.75rem;       /* Tamaño de fuente reducido */
+}
+
+/* Estilos para las filas de la tabla - CONTRASTE MEJORADO */
+.table-row-fixed {
+    height: 60px !important;
+    line-height: normal;
+}
+
+.table-row-striped:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.05); /* Aumentado el contraste (0.02 -> 0.05) */
+}
+
+.table-row-striped:nth-child(even) {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Destacar al pasar el mouse */
+.table-row-striped:hover {
+    background-color: rgba(154, 205, 50, 0.1); /* Color verde muy sutil al pasar el ratón */
+}
+
+/* Estilos para montos y valores */
+.monto-pagado {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.monto-parcial {
+    color: #fd7e14;
+    font-weight: 500;
+}
+
+.monto-pendiente {
+    color: #dc3545;
+    font-size: 0.75rem;
+}
+
+.monto-valor {
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.monto-total {
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+.monto-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Centrado vertical para todas las celdas de la tabla */
+.table td, .table th {
+    vertical-align: middle;
+}
+
+/* Otros estilos de la interfaz */
+.balance-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-card .card-body {
+    flex: 1;
+}
+
+.selected-row {
+    background-color: rgba(154, 205, 50, 0.15) !important;
+}
+
+.acreedor-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.acreedor-saldo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.acreedor-mini-datos {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.financiacion-item {
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.financiacion-item:last-child {
+    border-bottom: none;
+}
+
+.porcentaje-badge {
+    background-color: #9acd32;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.badge-estado-na {
+    background-color: #6c757d;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.btn-top-right {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+/* Estilo para el selector de mes */
+.month-selector {
+    background-color: #FFF9E0;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
+
+/* Estilo para la fecha de creación */
+.acreedor-fecha-creacion {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 5px;
+    padding: 2px 0;
+}
+
+.acreedor-fecha-creacion i {
+    color: #9acd32;
+    opacity: 0.8;
+}
+
+.fecha-label {
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.fecha-valor {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Estilos para los botones de toggle */
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Animación suave para mostrar/ocultar */
+.pendientes-text, .totales-text {
+    transition: opacity 0.3s ease;
+}
+
+/* Estilos para la tabla panorámica */
+.panoramic-table {
+    font-size: 0.85rem;
+    border-collapse: collapse;
+}
+
+.panoramic-table th {
+    font-weight: 600;
+    padding: 0.75rem;
+    white-space: nowrap;
+}
+
+.panoramic-table td {
+    padding: 0.5rem 0.75rem;
+}
+
+.acreedor-column {
+    min-width: 200px;
+    width: 15%;
+}
+
+.month-column {
+    min-width: 90px;
+    width: 8%;
+}
+
+.total-column {
+    min-width: 110px;
+    width: 10%;
+    font-weight: 600;
+}
+
+/* Avatar del acreedor */
+.acreedor-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #9acd32;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+/* Estilos para los montos en la tabla */
+.monto-tabla {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.monto-tabla.pagado, .monto-tabla.pagado-total {
+    color: #28a745;
+}
+
+.monto-tabla.parcial {
+    color: #ffc107;
+}
+
+.monto-tabla.pendiente, .monto-tabla.pendiente-total {
+    color: #dc3545;
+}
+
+.monto-tabla.saldo-favor {
+    color: #198754;
+}
+
+.monto-tabla.total {
+    color: #495057;
+}
+
+/* Mejoras de visibilidad */
+.month-data {
+    border-left: 1px solid #dee2e6 !important;
+    border-right: 1px solid #dee2e6 !important;
+}
+
+/* Estilos movidos desde pagos.blade.php */
+.table-info {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+/* Bootstrap badge overrides (considerar si son necesarios si Bootstrap se carga después) */
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+/* .badge.bg-success ya está cubierto por .acreedor-tabs .nav-link .badge si el color es el mismo,
+   o puedes añadirlo explícitamente si se usa en otros contextos: */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.saldo-positivo {
+    color: #dc3545; /* Rojo */
+    font-weight: bold;
+}
+.saldo-negativo {
+    color: #28a745; /* Verde */
+    font-weight: bold;
+}
+
+/* Estilos para la página de liquidaciones */
+.table-info {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.saldo-positivo {
+    color: #dc3545; /* Rojo */
+    font-weight: bold;
+}
+
+.saldo-negativo {
+    color: #28a745; /* Verde */
+    font-weight: bold;
+} 

@@ -1,0 +1,50 @@
+body {
+    background-color: #f5f5dc; /* Color crema claro */
+    font-family: 'Nunito', sans-serif;
+}
+
+h4 {
+    text-transform: uppercase;
+    font-size: 1.25rem; /* Tamaño de fuente más pequeño */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrar texto */
+}
+
+.section-border {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff; /* Fondo blanco para las secciones */
+}
+
+.form-control {
+    background-color: #fff; /* Fondo blanco para los inputs */
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto; /* Centrar el botón */
+    background-color: #28a745; /* Color verde */
+    border-color: #28a745;
+}
+
+.alert-success {
+    background-color: #218838; /* Verde más intenso */
+    color: white;
+}
+
+.csv-import-box {
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.csv-info {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 10px;
+} 

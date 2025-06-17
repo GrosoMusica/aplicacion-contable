@@ -1,0 +1,195 @@
+.error-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.error-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.error-description {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para los badges */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+}
+
+/* Estilos para los botones */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* Animación suave para los botones */
+.btn-outline-danger:hover,
+.btn-outline-warning:hover,
+.btn-outline-primary:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .error-card {
+        margin-bottom: 1rem;
+    }
+    
+    .error-icon {
+        font-size: 1.8rem;
+    }
+    
+    .error-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Estilos para el calendario de fecha de pago */
+.calendar-date {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.calendar-date:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.calendar-date .month {
+    font-size: 0.9em;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.calendar-date .day {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #343a40;
+    line-height: 1.2;
+    margin: 5px 0;
+}
+
+.calendar-date .year {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Estilos para la tabla de pagos */
+.table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#paymentsTable {
+    margin-bottom: 0;
+}
+
+#paymentsTable thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+#paymentsTable tbody tr {
+    transition: background-color 0.2s;
+}
+
+#paymentsTable tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos para celdas editables */
+.editable-cell {
+    cursor: pointer;
+    position: relative;
+    padding-right: 25px !important;
+    transition: background-color 0.2s;
+}
+
+.editable-cell:hover {
+    background-color: #f8f9fa;
+}
+
+.editable-cell:hover::after {
+    content: '✎';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #007bff;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.editable-cell input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    outline: none;
+}
+
+.editable-cell input:focus {
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* Estilos para el modal */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 12px 12px 0 0;
+    padding: 1.25rem;
+}
+
+.modal-title {
+    color: #343a40;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-radius: 0 0 12px 12px;
+    padding: 1.25rem;
+} 

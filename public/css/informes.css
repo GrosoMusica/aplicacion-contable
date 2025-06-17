@@ -1,0 +1,519 @@
+/* Estilos generales para módulos de informes y reportes */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: rgba(33, 37, 41, 0.2);
+    padding-top: 0;
+}
+
+/* Cards y contenedores */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+}
+
+.equal-height-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.equal-height-card .card-body {
+    flex: 1;
+}
+
+.informe-section {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Tablas */
+.table td {
+    vertical-align: middle;
+}
+
+.table-responsive {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Estilos para el encabezado de la tabla de detalles */
+#collapseDebug .table thead th {
+    background-color: #212529;
+    color: white;
+    border-color: #32383e;
+}
+
+/* Asegurar que el encabezado table-dark funcione correctamente */
+.table thead.table-dark th {
+    background-color: #212529 !important;
+    color: white !important;
+    border-color: #32383e !important;
+}
+
+/* Estados de cuotas y badges */
+.badge-count {
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.cuotas-badge {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.estado-pendiente { color: #dc3545; }
+.estado-parcial { color: #ffc107; }
+.estado-pagada { color: #28a745; }
+.estado-futura { color: #6c757d; }
+
+/* Iconos */
+.icon-column {
+    color: #6c757d;
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.action-btn {
+    margin-right: 5px;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Filas con estados especiales */
+.moroso-row.warning {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.moroso-row.danger {
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.finalizado-row {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+}
+
+/* Estilos para la página "Próximos a finalizar" */
+.btn-finalizados {
+    background-color: #28a745;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    margin-left: 8px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn-finalizados:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-finalizados-icon {
+    color: white;
+}
+
+.btn-mail-light {
+    background-color: #ffc107;
+    opacity: 0.85;
+    color: #212529;
+}
+
+.btn-mail-light:hover {
+    opacity: 1;
+    background-color: #ffca2c;
+}
+
+.titulo-con-accion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Balance info */
+.balance-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.balance-info .card {
+    transition: transform 0.3s ease;
+}
+
+.balance-info .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Navegación */
+.nav-link {
+    color: #495057;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Estilos para el navegador de mes */
+.month-navigator {
+    padding: 15px;
+    position: relative;
+}
+
+.month-navigator h6 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.month-navigator .badge {
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.month-navigator.current-month {
+    border: 2px solid #fd7e14;
+    border-radius: 6px;
+}
+
+/* Botones del navegador de mes */
+.btn-month-nav {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Panel lateral flotante - SIMPLIFICADO */
+.lateral-flotante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    padding: 15px 0;
+}
+
+.lateral-oculto {
+    display: none;
+}
+
+.contenedor-cajas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+#cajasPanel {
+    margin: 0 -10px;
+}
+
+#cajasPanel .col {
+    padding: 0 10px;
+}
+
+/* Ocultar los controles nativos de DataTables */
+#tablaDeudores_wrapper .dataTables_length, 
+#tablaDeudores_wrapper .dataTables_filter, 
+#tablaDeudores_wrapper .dataTables_info, 
+#tablaDeudores_wrapper .dataTables_paginate {
+    display: none !important;
+}
+
+/* Estilos para el buscador personalizado */
+#dtSearchBox:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* ELIMINACIÓN AGRESIVA de flechas en todas las columnas excepto la primera */
+#tablaDeudores th:not(:first-child).sorting,
+#tablaDeudores th:not(:first-child).sorting_asc,
+#tablaDeudores th:not(:first-child).sorting_desc,
+#tablaDeudores th:not(:first-child).sorting_disabled {
+    background-image: none !important;
+    padding-right: 0.75rem !important; /* Eliminar padding extra que deja espacio para flechas */
+    cursor: default !important;
+}
+
+/* Asegurarse que las clases de DataTables no muestren flechas */
+.sorting_disabled {
+    background-image: none !important;
+}
+
+/* Solo la primera columna es ordenable y muestra flechas */
+#tablaDeudores th:first-child {
+    cursor: pointer !important;
+}
+
+/* Espaciado para el contenido debajo del panel - CORREGIDO */
+.informe-section {
+    margin-top: 0;
+}
+
+/* Cuando el panel está oculto */
+body.panel-oculto .informe-section {
+    margin-top: 0;
+}
+
+/* Sencilla responsividad */
+@media (max-width: 768px) {
+    .informe-section {
+        margin-top: 0;
+    }
+}
+
+/* Ajuste para eliminar espacios en blanco */
+.container.mt-4 {
+    margin-top: 1rem !important;
+}
+
+/* Estilos para modal de pagos */
+.pagos-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.pagos-form label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.pagos-form .custom-select {
+    border-radius: 0.25rem;
+}
+
+/* Elementos de interfaz */
+.badge {
+    padding: 0.35em 0.65em;
+}
+
+.small-icon {
+    font-size: 0.7rem;
+    margin-right: 3px;
+}
+
+.hover-cell:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+
+.text-smaller {
+    font-size: 0.85rem;
+}
+
+/* Estilos para filtros */
+.filter-panel {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.date-filter {
+    max-width: 150px;
+}
+
+/* Estilos para la presentación condicional */
+.bg-pago-completo {
+    background-color: rgba(25, 135, 84, 0.1) !important;
+}
+
+.bg-pago-parcial {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+.bg-pago-pendiente {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.badge-cuota-completa {
+    background-color: #198754;
+    color: white;
+}
+
+.badge-cuota-parcial {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-cuota-pendiente {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estados de cuotas */
+.cuota-pagada {
+    color: #198754;
+    font-weight: bold;
+}
+
+.cuota-parcial {
+    color: #fd7e14;
+    font-weight: bold;
+}
+
+.cuota-pendiente {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.cuota-futura {
+    color: #6c757d;
+}
+
+/* Navegación de meses */
+.nav-months {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.nav-months .btn {
+    margin: 0 2px;
+    border-radius: 30px;
+    min-width: 36px;
+}
+
+.nav-months .btn.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.month-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/* Paginación personalizada */
+.pagination .page-link {
+    color: #2c3e50;
+    border-color: #e9ecef;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Tooltips personalizados */
+.custom-tooltip {
+    --bs-tooltip-bg: rgba(33, 37, 41, 0.9);
+    --bs-tooltip-color: white;
+}
+
+/* Panel lateral flotante - NUEVOS ESTILOS */
+.lateral-flotante {
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    width: 250px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.lateral-boton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.lateral-oculto {
+    right: -260px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: start !important;
+    }
+    
+    .card-header > div {
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .btn-group {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .titulo-con-accion {
+        flex-wrap: wrap;
+    }
+    
+    .lateral-flotante {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .lateral-oculto {
+        right: 0;
+    }
+}
