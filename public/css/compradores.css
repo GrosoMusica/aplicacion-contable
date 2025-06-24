@@ -25,15 +25,15 @@ body {
     background-color: #dc3545;
 }
 
-/* Estilo para compradores judicializados */
+/* Estilo para compradores judicializados - v3 >> propietario Múltiples Lotes */
 .judicializado {
-    border-left: 4px solid #dc3545;
+    border-left: 4px solid #35b5dc;
     background-color: rgba(255, 0, 0, 0.05);
 }
 
 /* Estilos para asegurar que los bordes judicializados se muestren correctamente */
 tr.judicializado td:first-child {
-    border-left: 4px solid #dc3545;
+    border-left: 4px solid #35b5dc;
 }
 
 /* Caja de búsqueda */

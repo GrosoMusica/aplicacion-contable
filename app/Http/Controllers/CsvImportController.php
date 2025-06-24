@@ -123,18 +123,20 @@ class CsvImportController extends Controller
                     // Verificar si ya existe un comprador con el mismo DNI
                     $dniExistente = Comprador::where('dni', $data['dni'])->first();
                     if ($dniExistente) {
+                        // Marcar el comprador existente como judicializado
+                        $dniExistente->judicializado = 1;
+                        $dniExistente->save();
                         $totalDniDuplicados++;
-                        $errors[] = "Fila {$rowNumber}: DNI '{$data['dni']}' ya existe para el comprador '{$dniExistente->nombre}'. Entrada omitida.";
-                        continue; // Saltar al siguiente registro
                     }
                     
-                    // Crear el comprador
+                    // Crear el comprador (siempre crear uno nuevo, incluso si el DNI ya existe)
                     $comprador = new Comprador();
                     $comprador->nombre = $data['nombre'];
                     $comprador->direccion = $data['direccion'];
                     $comprador->telefono = $data['telefono'];
                     $comprador->email = $data['email'];
                     $comprador->dni = $data['dni'];
+                    $comprador->judicializado = $dniExistente ? 1 : 0; // Si existe DNI duplicado, marcar como judicializado
                     $comprador->save();
                     
                     // SIEMPRE crear un nuevo lote
@@ -142,7 +144,7 @@ class CsvImportController extends Controller
                     $lote->manzana = $data['manzana'];
                     $lote->lote = $data['lote'];
                     $lote->loteo = $data['loteo'];
-                    $lote->mts_cuadrados = $data['mts_cuadrados'];
+                    $lote->mts_cuadrados = !empty($data['mts_cuadrados']) ? floatval($data['mts_cuadrados']) : null;
                     $lote->estado = 'comprado';
                     $lote->comprador_id = $comprador->id; // Asociar el lote con el comprador
                     $lote->save();
@@ -150,12 +152,12 @@ class CsvImportController extends Controller
                     // Crear la financiación y asociarla solo con el comprador
                     $financiacion = new Financiacion();
                     $financiacion->comprador_id = $comprador->id; // Asociación con comprador
-                    $financiacion->monto_a_financiar = $data['monto_a_financiar'];
+                    $financiacion->monto_a_financiar = $this->cleanAmount($data['monto_a_financiar']);
                     $financiacion->cantidad_de_cuotas = $data['cantidad_de_cuotas'];
                     
                     // Calcular y establecer el monto de cada cuota
                     $cantidadCuotas = intval($data['cantidad_de_cuotas']);
-                    $montoPorCuota = floatval($data['monto_a_financiar']) / $cantidadCuotas;
+                    $montoPorCuota = $this->cleanAmount($data['monto_a_financiar']) / $cantidadCuotas;
                     $financiacion->monto_de_las_cuotas = $montoPorCuota;
                     
                     // Parsear la fecha correctamente - manejando diferentes formatos posibles
@@ -294,5 +296,73 @@ class CsvImportController extends Controller
         };
         
         return response()->stream($callback, 200, $headers);
+    }
+
+    private function cleanAmount($amount)
+    {
+        if (empty($amount)) {
+            return 0;
+        }
+        
+        // Eliminar espacios
+        $amount = trim($amount);
+        
+        // Eliminar prefijos de moneda
+        $amount = preg_replace('/USD\s*/i', '', $amount);
+        $amount = preg_replace('/\$\s*/', '', $amount);
+        $amount = preg_replace('/\s*\$/', '', $amount);
+        
+        // Eliminar espacios extra
+        $amount = preg_replace('/\s+/', '', $amount);
+        
+        // Detectar el formato basado en la posición de comas y puntos
+        $commaCount = substr_count($amount, ',');
+        $dotCount = substr_count($amount, '.');
+        
+        if ($commaCount > 0 && $dotCount > 0) {
+            // Formato mixto: 1,234.56 o 1.234,56
+            $lastComma = strrpos($amount, ',');
+            $lastDot = strrpos($amount, '.');
+            
+            if ($lastComma > $lastDot) {
+                // Formato europeo: 1.234,56 (punto como miles, coma como decimal)
+                $amount = str_replace('.', '', $amount); // Eliminar puntos de miles
+                $amount = str_replace(',', '.', $amount); // Convertir coma decimal a punto
+            } else {
+                // Formato americano: 1,234.56 (coma como miles, punto como decimal)
+                $amount = str_replace(',', '', $amount); // Eliminar comas de miles
+            }
+        } elseif ($commaCount > 0) {
+            // Solo comas: 1,234 o 1,234,567
+            if ($commaCount == 1 && strlen($amount) - strpos($amount, ',') == 3) {
+                // Probablemente decimal: 1,23
+                $amount = str_replace(',', '.', $amount);
+            } else {
+                // Probablemente miles: 1,234
+                $amount = str_replace(',', '', $amount);
+            }
+        } elseif ($dotCount > 0) {
+            // Solo puntos: 1.234 o 1.234.567
+            if ($dotCount == 1 && strlen($amount) - strpos($amount, '.') == 3) {
+                // Probablemente decimal: 1.23
+                // Ya está en formato correcto
+            } else {
+                // Probablemente miles: 1.234
+                $amount = str_replace('.', '', $amount);
+            }
+        }
+        
+        // Si después de limpiar está vacío, retornar 0
+        if (empty($amount)) {
+            return 0;
+        }
+        
+        // Convertir a float y validar
+        $floatValue = floatval($amount);
+        
+        // Log para debug
+        Log::info("cleanAmount: original='{$amount}', cleaned={$floatValue}");
+        
+        return $floatValue;
     }
 } 

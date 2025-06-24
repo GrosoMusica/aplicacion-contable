@@ -250,7 +250,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($diagnostico['deudores'] as $deudor)
-                                                <tr id="fila-deudor-{{ $deudor->id }}" class="{{ $deudor->judicializado == 1 ? 'border border-danger' : '' }}">
+                                                <tr id="fila-deudor-{{ $deudor->id }}" class="{{ $deudor->judicializado == 1 ? 'multipropietario' : '' }}">
                                                     <td>{{ $deudor->nombre }}</td>
                                                     <td>{{ $deudor->email }}</td>
                                                     <td>{{ $deudor->telefono }}</td>

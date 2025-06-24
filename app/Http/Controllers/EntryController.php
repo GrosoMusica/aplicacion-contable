@@ -21,15 +21,15 @@ class EntryController extends Controller
         try {
             // Validar los datos del formulario
             $request->validate([
-                'nombre' => 'required|string|max:255',
-                'direccion' => 'required|string|max:255',
-                'telefono' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'dni' => 'required|string|max:20',
-                'loteo' => 'required|string|max:255',
-                'manzana' => 'required|string|max:255',
-                'lote' => 'required|string|max:255',
-                'mts_cuadrados' => 'required|numeric',
+                'nombre' => 'nullable|string|max:255',
+                'direccion' => 'nullable|string|max:255',
+                'telefono' => 'nullable|string|max:255',
+                'email' => 'nullable|email|max:255',
+                'dni' => 'nullable|string|max:20',
+                'loteo' => 'nullable|string|max:255',
+                'manzana' => 'nullable|string|max:255',
+                'lote' => 'nullable|string|max:255',
+                'mts_cuadrados' => 'nullable|numeric',
                 'monto_a_financiar' => 'required|numeric',
                 'cantidad_de_cuotas' => 'required|integer',
                 'fecha_de_vencimiento' => 'required|date',
@@ -39,16 +39,22 @@ class EntryController extends Controller
             ]);
 
             // Crear el nuevo comprador
-            $comprador = Comprador::create($request->only(['nombre', 'direccion', 'telefono', 'email', 'dni']));
+            $comprador = Comprador::create([
+                'nombre' => $request->nombre ?? '',
+                'direccion' => $request->direccion ?? '',
+                'telefono' => $request->telefono ?? '',
+                'email' => $request->email ?? '',
+                'dni' => $request->dni ?? '',
+            ]);
 
             // Crear el lote asociado al comprador
             $lote = Lote::create([
                 'estado' => 'comprado',
                 'comprador_id' => $comprador->id,
-                'loteo' => $request->loteo,
-                'manzana' => $request->manzana,
-                'lote' => $request->lote,
-                'mts_cuadrados' => $request->mts_cuadrados,
+                'loteo' => $request->loteo ?? '',
+                'manzana' => $request->manzana ?? '',
+                'lote' => $request->lote ?? '',
+                'mts_cuadrados' => $request->mts_cuadrados ? floatval($request->mts_cuadrados) : null,
             ]);
 
             // Calcular el monto de las cuotas
@@ -222,9 +228,7 @@ class EntryController extends Controller
                     Log::info('EntryController@import: Datos mapeados: ' . json_encode($data));
                     
                     // Validar que existan los datos necesarios
-                    $requiredFields = ['nombre', 'direccion', 'telefono', 'email', 'dni', 
-                                       'manzana', 'lote', 'loteo', 'mts_cuadrados', 
-                                       'monto_a_financiar', 'cantidad_de_cuotas', 'fecha_de_vencimiento'];
+                    $requiredFields = ['monto_a_financiar', 'cantidad_de_cuotas', 'fecha_de_vencimiento'];
                     
                     foreach ($requiredFields as $field) {
                         if (!isset($data[$field]) || empty($data[$field])) {
@@ -235,21 +239,21 @@ class EntryController extends Controller
                     // 1. Crear el lote
                     Log::info('EntryController@import: Creando lote');
                     $lote = new Lote();
-                    $lote->manzana = $data['manzana'];
-                    $lote->lote = $data['lote'];
-                    $lote->loteo = $data['loteo'];
-                    $lote->mts_cuadrados = floatval($data['mts_cuadrados']);
+                    $lote->manzana = $data['manzana'] ?? '';
+                    $lote->lote = $data['lote'] ?? '';
+                    $lote->loteo = $data['loteo'] ?? '';
+                    $lote->mts_cuadrados = !empty($data['mts_cuadrados']) ? floatval($data['mts_cuadrados']) : null;
                     $lote->save();
                     Log::info('EntryController@import: Lote creado con ID ' . $lote->id);
                     
                     // 2. Crear el comprador
                     Log::info('EntryController@import: Creando comprador');
                     $comprador = new Comprador();
-                    $comprador->nombre = $data['nombre'];
-                    $comprador->direccion = $data['direccion'];
-                    $comprador->telefono = $data['telefono'];
-                    $comprador->email = $data['email'];
-                    $comprador->dni = $data['dni'];
+                    $comprador->nombre = $data['nombre'] ?? '';
+                    $comprador->direccion = $data['direccion'] ?? '';
+                    $comprador->telefono = $data['telefono'] ?? '';
+                    $comprador->email = $data['email'] ?? '';
+                    $comprador->dni = $data['dni'] ?? '';
                     $comprador->lote_id = $lote->id;
                     $comprador->save();
                     Log::info('EntryController@import: Comprador creado con ID ' . $comprador->id);

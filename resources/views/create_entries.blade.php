@@ -49,23 +49,23 @@
                         <h4>Comprador</h4>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
                         </div>
                         <div class="mb-3">
                             <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" required>
+                            <input type="text" class="form-control" id="direccion" name="direccion">
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono" required>
+                            <input type="text" class="form-control" id="telefono" name="telefono">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="mb-3">
                             <label for="dni" class="form-label">DNI</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required>
+                            <input type="text" class="form-control" id="dni" name="dni">
                         </div>
                     </div>
                 </div>
@@ -79,21 +79,21 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="manzana" class="form-label">Manzana</label>
-                                    <input type="text" class="form-control" id="manzana" name="manzana" required>
+                                    <input type="text" class="form-control" id="manzana" name="manzana">
                                 </div>
                                 <div class="mb-3">
                                     <label for="lote" class="form-label">Lote</label>
-                                    <input type="text" class="form-control" id="lote" name="lote" required>
+                                    <input type="text" class="form-control" id="lote" name="lote">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="loteo" class="form-label">Loteo</label>
-                                    <input type="text" class="form-control" id="loteo" name="loteo" required>
+                                    <input type="text" class="form-control" id="loteo" name="loteo">
                                 </div>
                                 <div class="mb-3">
                                     <label for="mts_cuadrados" class="form-label">Metros Cuadrados</label>
-                                    <input type="number" step="0.01" class="form-control" id="mts_cuadrados" name="mts_cuadrados" required>
+                                    <input type="number" step="0.01" class="form-control" id="mts_cuadrados" name="mts_cuadrados">
                                 </div>
                             </div>
                         </div>
